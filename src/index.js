@@ -19,9 +19,6 @@ const MuiButtons = ({ tasks, urls, onClick }) => {
     const url = urls[envUrlKey] || "";
 
     onClick(url, event);
-
-    //     const url = urls[envUrlKey];
-    // console.log(first)
   };
 
   return (
