@@ -1,28 +1,39 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import QuickLinksContainer from "../../src";
+import MuiButtons from "../../src";
+import * as urls from "./urls"; // Import all URLs as an object
 
 const Demo = () => {
-  const linksArray = [
-    { title: "Provider Manuals", link: "/provider-manuals" },
-    { title: "Billing Manuals", link: "/billing-manuals" },
-    { title: "Resources", link: "/resources" },
-    { title: "FAQ", link: "/faq" },
-    { title: "Trainings", link: "/trainings" },
-    { title: "Schedule", link: "/schedule" },
-    { title: "Events", link: "/events" },
-    { title: "About us", link: "/about-us" },
-    { title: "Contact us", link: "/contact-us" },
-    // show more links
-    { title: "Provider Manuals", link: "/provider-manuals" },
-    { title: "Billing Manuals", link: "/billing-manuals" },
-    { title: "Resources", link: "/resources" },
-    { title: "FAQ", link: "/faq" },
-    { title: "Trainings", link: "/trainings" },
-    { title: "Schedule", link: "/schedule" },
-    { title: "Events", link: "/events" },
+  const tasks = [
+    {
+      name: "Claims",
+      icon: "fa-file-text",
+      envUrlKey: "REACT_APP_CLAIMS_URL",
+      bgColorCode: "#074cbc",
+    },
+    {
+      name: "Financial",
+      icon: "fa-usd",
+      envUrlKey: "REACT_APP_FIN_URL",
+      bgColorCode: "#077266",
+    },
+    {
+      name: "Provider",
+      icon: "fa-users",
+      envUrlKey: "REACT_APP_WP_URL",
+      bgColorCode: "#2d4967",
+    },
   ];
-  return <QuickLinksContainer linksArray={linksArray} />;
+
+  const handleButtonClick = (envUrlLink, event) => {
+    console.log(`Button clicked with Link: ${envUrlLink}`, event);
+  };
+
+  return (
+    <>
+      <MuiButtons tasks={tasks} urls={urls} onClick={handleButtonClick} />
+    </>
+  );
 };
 
 ReactDOM.render(<Demo />, document.getElementById("app"));
